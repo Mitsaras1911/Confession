@@ -9,6 +9,8 @@ class Priests extends Model
 {
     use HasFactory;
 
+//    protected $fillable = []
+
 
     public function appointments(): \Illuminate\Database\Eloquent\Relations\HasMany
     {

@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (){
-    return 'It is working';
-});
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\API\V1'], function (){
+   Route::apiResource('priests', \App\Http\Controllers\API\V1\PriestsController::class);
+   Route::apiResource('appointments', \App\Http\Controllers\API\V1\AppointmentsController::class);
+    Route::get('/', function (){
+        return 'it is working!!!';
+    });
+
 });

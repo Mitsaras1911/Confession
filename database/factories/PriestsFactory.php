@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Termwind\Html\InheritStyles;
 
@@ -18,14 +19,15 @@ class PriestsFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => User::factory(),
             'name' => $this->faker->firstNameMale(),
-           'surname'=>$this->faker->lastName('MALE'),
+            'surname'=>$this->faker->lastName('MALE'),
             'rank'=>$this->faker->numberBetween(1,4),
             'parish'=>$this->faker->address,
             'age' =>$this->faker->numberBetween(20,80),
-            'email'=>$this->faker->email(),
             'phone_number'=>$this->faker->phoneNumber(),
-            'verified' =>$this->faker->boolean('50'),
+            'church_name'=>$this->faker->city(),
+            'verified_by_admin' =>$this->faker->boolean('50'),
         ];
     }
 }

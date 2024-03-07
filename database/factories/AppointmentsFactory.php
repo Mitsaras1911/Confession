@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Priests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,14 @@ class AppointmentsFactory extends Factory
     public function definition(): array
     {
         return [
-            'confessor_name' =>$this->faker->name().$this->faker->lastName(),
+            'priest_id'=> Priests::factory(),
+            'confessor_name' =>$this->faker->name(),
             'phone_number'=>$this->faker->phoneNumber(),
-            'date'=>$this->faker->date('dd/mm/YYYY'),
+            'date'=>$this->faker->date('d/m/Y'),
             'time'=>$this->faker->time('H:i:s'),
             'slot_count'=>$this->faker->numberBetween(1,2),
-            'status'=>$this->faker->randomElement(['V','P','A'])
+            'status'=>$this->faker->randomElement(['D','P','A']),
+            'response_message'=>$this->faker->text(100),
         ];
     }
 }

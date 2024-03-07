@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
-use App\Models\Priests;
-use App\Http\Requests\StorePriestsRequest;
-use App\Http\Requests\UpdatePriestsRequest;
+use App\Http\Requests\StoreCalendarRequest;
+use App\Http\Requests\UpdateCalendarRequest;
+use App\Models\Calendar;
 
-class PriestsController extends Controller
+class CalendarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class PriestsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePriestsRequest $request)
+    public function store(StoreCalendarRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class PriestsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Priests $priests)
+    public function show(Calendar $calendar)
     {
         //
     }
@@ -43,7 +43,7 @@ class PriestsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Priests $priests)
+    public function edit(Calendar $calendar)
     {
         //
     }
@@ -51,7 +51,7 @@ class PriestsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePriestsRequest $request, Priests $priests)
+    public function update(UpdateCalendarRequest $request, Calendar $calendar)
     {
         //
     }
@@ -59,7 +59,7 @@ class PriestsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Priests $priests)
+    public function destroy(Calendar $calendar)
     {
         //
     }

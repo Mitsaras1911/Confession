@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Priests;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,8 @@ class CalendarFactory extends Factory
     public function definition(): array
     {
         return [
+            'priest_id'=>Priests::factory(),
+            'location'=>$this->faker->streetName(),
             'date' => $this->faker->date('dd/mm/YYYY'),
             'slot_size' => $this->faker->randomElement([15, 30, 45]),
             'disabled' => $this->faker->boolean(),

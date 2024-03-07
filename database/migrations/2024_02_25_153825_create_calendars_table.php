@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
 
             $table->integer('priest_id');
-            $table->date('date');
+            $table->string('location');
+            $table->string('date');
             $table->integer('slot_size');
             $table->boolean('disabled');
-            $table->time('starting_at');
-            $table->time('ending_at');
+            $table->string('starting_at');
+            $table->string('ending_at');
 
             $table->softDeletes();
             $table->timestamps();

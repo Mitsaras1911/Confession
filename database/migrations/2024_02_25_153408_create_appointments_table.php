@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('priest_id');
-
+            $table->integer('priest_id');//RELATION WITH PRIESTS TABLE
             $table->string('confessor_name');
+            $table->string('response_message')->nullable();
             $table->string('phone_number');
-            $table->date('date');
-            $table->time('time');
+            $table->string('date');
+            $table->string('time');
             $table->integer('slot_count');
             $table->string('status');//Approoved,Pending,Declined
 

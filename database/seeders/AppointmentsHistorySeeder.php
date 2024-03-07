@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Appointments;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,8 @@ class AppointmentsHistorySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Appointments::factory()
+            ->count(100)
+            ->create();
     }
 }

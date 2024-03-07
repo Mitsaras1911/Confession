@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('church_name');
             $table->string('parish');
             $table->integer('age');
-            $table->string('email');
             $table->string('phone_number');
             $table->boolean('verified_by_admin');
             $table->timestamps();

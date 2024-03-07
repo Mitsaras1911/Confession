@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\V1;
 
-use App\Models\Appointments;
-use App\Http\Requests\StoreAppointmentsRequest;
-use App\Http\Requests\UpdateAppointmentsRequest;
+use App\Http\Requests\StoreAppointmentsHistoryRequest;
+use App\Http\Requests\UpdateAppointmentsHistoryRequest;
+use App\Models\AppointmentsHistory;
 
-class AppointmentsController extends Controller
+class AppointmentsHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class AppointmentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAppointmentsRequest $request)
+    public function store(StoreAppointmentsHistoryRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class AppointmentsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Appointments $appointments)
+    public function show(AppointmentsHistory $appointmentsHistory)
     {
         //
     }
@@ -43,7 +43,7 @@ class AppointmentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Appointments $appointments)
+    public function edit(AppointmentsHistory $appointmentsHistory)
     {
         //
     }
@@ -51,7 +51,7 @@ class AppointmentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAppointmentsRequest $request, Appointments $appointments)
+    public function update(UpdateAppointmentsHistoryRequest $request, AppointmentsHistory $appointmentsHistory)
     {
         //
     }
@@ -59,7 +59,7 @@ class AppointmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Appointments $appointments)
+    public function destroy(AppointmentsHistory $appointmentsHistory)
     {
         //
     }
