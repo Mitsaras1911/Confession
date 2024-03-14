@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Requests\StoreAppointmentsHistoryRequest;
-use App\Http\Requests\UpdateAppointmentsHistoryRequest;
+use App\Http\Requests\v1\StoreAppointmentsHistoryRequest;
+use App\Http\Requests\v1\UpdateAppointmentsHistoryRequest;
 use App\Models\AppointmentsHistory;
 
 class AppointmentsHistoryController extends Controller

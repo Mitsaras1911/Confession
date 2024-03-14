@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Requests\StorePriestsRequest;
-use App\Http\Requests\UpdatePriestsRequest;
-use App\Http\Resources\V1\PriestCollection;
+use App\Http\Requests\v1\StorePriestsRequest;
+use App\Http\Requests\v1\UpdatePriestsRequest;
 use App\Http\Resources\V1\PriestResource;
 use App\Models\Priests;
-use App\Filters\V1\PriestsFilter;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PriestsController extends Controller
@@ -15,30 +14,33 @@ class PriestsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request): PriestCollection
+    public function index(Request $request)
     {
-        $filter = new PriestsFilter();
-        $queryItems = $filter->transform($request);
-        if(count($queryItems)==0)
-            return new PriestCollection(Priests::paginate());
-        else
-            return new PriestCollection(Priests::where($queryItems)->paginate());
+        return
+        Priests::filter()
+            ->with('month_schedule')->get();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePriestsRequest $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            // Add other validation rules for customer fields
+        ]);
+        $user = User::create([
+            'email' => $request->email,
+            'password' => bcrypt('12345678'),
+        ]);
+
+        $priest = Priests::create(array_merge($request->all(), [
+            'user_id' => $user->id,
+        ]));
+        return new PriestResource($priest);
     }
 
     /**
@@ -47,14 +49,6 @@ class PriestsController extends Controller
     public function show(Priests $priest): PriestResource
     {
         return new PriestResource($priest);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Priests $priests)
-    {
-        //
     }
 
     /**

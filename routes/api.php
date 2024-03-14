@@ -13,16 +13,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::get('/', function (){
+    return '////';
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\API\V1'], function (){
-   Route::apiResource('priests', \App\Http\Controllers\API\V1\PriestsController::class);
+
+    Route::get('calendar/avail',[\App\Http\Controllers\API\V1\CalendarController::class,'availableDates']);
+
+
+    Route::apiResource('priests', \App\Http\Controllers\API\V1\PriestsController::class);
    Route::apiResource('appointments', \App\Http\Controllers\API\V1\AppointmentsController::class);
-    Route::get('/', function (){
-        return 'it is working!!!';
-    });
+   Route::apiResource('calendar', \App\Http\Controllers\API\V1\CalendarController::class);
 
 });

@@ -1,27 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\API\V1;
-
-use App\Filters\V1\AppointmentsFilter;
-use App\Http\Requests\StoreAppointmentsRequest;
-use App\Http\Requests\UpdateAppointmentsRequest;
+use App\Http\Requests\v1\StoreAppointmentsRequest;
+use App\Http\Requests\v1\UpdateAppointmentsRequest;
 use App\Http\Resources\V1\AppointmentCollection;
+use App\Http\Resources\V1\AppointmentResource;
 use App\Models\Appointments;
-use Illuminate\Http\Request;
 
 class AppointmentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
+    public function index()
     {
-        $filter = new AppointmentsFilter();
-        $queryItems = $filter->transform($request);
-
-        if(count($queryItems)==0) return new AppointmentCollection(Appointments::paginate());
-
-        else return new AppointmentCollection(Appointments::where($queryItems)->paginate());
+        return new AppointmentCollection(Appointments::all());
     }
 
     /**
@@ -37,15 +27,18 @@ class AppointmentsController extends Controller
      */
     public function store(StoreAppointmentsRequest $request)
     {
-        //
+        $appointment = Appointments::create($request->all());
+
+
+        return new AppointmentResource($appointment);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Appointments $appointments)
+    public function show(Appointments $appointment): AppointmentResource
     {
-        //
+        return new AppointmentResource($appointment);
     }
 
     /**

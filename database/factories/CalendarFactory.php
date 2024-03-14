@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Priests;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,14 +18,20 @@ class CalendarFactory extends Factory
      */
     public function definition(): array
     {
+
+
         return [
             'priest_id'=>Priests::factory(),
             'location'=>$this->faker->streetName(),
-            'date' => $this->faker->date('dd/mm/YYYY'),
-            'slot_size' => $this->faker->randomElement([15, 30, 45]),
+//            'date' =>
+            'slotSize' => $this->faker->randomElement([15, 30, 45]),
             'disabled' => $this->faker->boolean(),
-            'starting_at' => $this->faker->time('H:i:s'),
-            'ending_at' => $this->faker->time('H:i:s'),
+            'startingTimeAt' => $this->faker->time('H:i:s'),
+            'endingTimeAt' => $this->faker->time('H:i:s'),
         ];
+
+
+
+
     }
 }

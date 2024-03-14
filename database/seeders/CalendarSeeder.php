@@ -13,8 +13,5 @@ class CalendarSeeder extends Seeder
      */
     public function run(): void
     {
-        Calendar::factory()
-            ->count(300)
-            ->create();
     }
 }

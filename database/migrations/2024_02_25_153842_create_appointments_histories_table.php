@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->integer('priest_id');
 
-            $table->string('confessor_name');
-            $table->string('phone_number');
+            $table->string('confessorName');
+            $table->string('phoneNumber');
             $table->date('date');
             $table->time('time');
-            $table->integer('slot_count');
+            $table->integer('slotCount');
             $table->string('status');
 
             $table->softDeletes();

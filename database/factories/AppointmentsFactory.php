@@ -17,15 +17,21 @@ class AppointmentsFactory extends Factory
      */
     public function definition(): array
     {
+        // Generate a random phone number with country code
+        $phoneNumber = $this->faker->phoneNumber;
+
+        // Modify the phone number to fit the format of Cyprus numbers
+        // Cyprus phone numbers start with +357 followed by 8 digits
+        $cyprusPhoneNumber = '+357' . substr(preg_replace('/[^0-9]/', '', $phoneNumber), -8);
+
+
         return [
             'priest_id'=> Priests::factory(),
-            'confessor_name' =>$this->faker->name(),
-            'phone_number'=>$this->faker->phoneNumber(),
+            'confessorName' =>$this->faker->name(),
+            'phoneNumber'=> $cyprusPhoneNumber,
             'date'=>$this->faker->date('d/m/Y'),
             'time'=>$this->faker->time('H:i:s'),
-            'slot_count'=>$this->faker->numberBetween(1,2),
-            'status'=>$this->faker->randomElement(['D','P','A']),
-            'response_message'=>$this->faker->text(100),
+            'slotCount'=>$this->faker->numberBetween(1,2),
         ];
     }
 }

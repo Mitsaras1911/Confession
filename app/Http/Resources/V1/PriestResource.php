@@ -16,19 +16,18 @@ class PriestResource extends JsonResource
     {
         return [
             'id'=>$this->id,
-            'rank'=>$this->rank(),
+            'rank'=>$this->rankToString(),
             'fullName' => $this->name.' '.$this->surname.' ('.$this->age.')',
             'parish'=>$this->parish.', '.$this->church_name,
         ];
     }
 
-    public function rank(){
+    public function rankToString(){
         return match ($this->rank) {
-            1 => 'Πρεσβυτερος',
-            2 => 'Πρωτοπρεσβύτερος',
-            3 => 'Αρχιμανδρίτης',
-            4 => 'Μητροπολίτης',
-            default => 'Χωρίς Βαθμό',
+            '1' => 'Πρεσβυτερος',
+            '2' => 'Πρωτοπρεσβύτερος',
+            '3' => 'Αρχιμανδρίτης',
+            '4' => 'Μητροπολίτης',
         };
 
 

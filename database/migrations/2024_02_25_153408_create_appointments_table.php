@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->integer('priest_id');//RELATION WITH PRIESTS TABLE
-            $table->string('confessor_name');
-            $table->string('response_message')->nullable();
-            $table->string('phone_number');
+            $table->string('confessorName');
+            $table->string('responseMessage')->nullable();
+            $table->string('phoneNumber');
             $table->string('date');
             $table->string('time');
-            $table->integer('slot_count');
-            $table->string('status');//Approoved,Pending,Declined
+            $table->integer('slotCount');
+            $table->string('status')->default('P');//Approoved,Pending,Declined
 
             $table->softDeletes();
             $table->timestamps();

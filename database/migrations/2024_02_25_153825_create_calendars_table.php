@@ -17,10 +17,10 @@ return new class extends Migration
             $table->integer('priest_id');
             $table->string('location');
             $table->string('date');
-            $table->integer('slot_size');
+            $table->integer('slotSize');
             $table->boolean('disabled');
-            $table->string('starting_at');
-            $table->string('ending_at');
+            $table->string('startingTimeAt');
+            $table->string('endingTimeAt');
 
             $table->softDeletes();
             $table->timestamps();

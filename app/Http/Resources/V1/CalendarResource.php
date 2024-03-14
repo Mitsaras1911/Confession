@@ -14,6 +14,15 @@ class CalendarResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return
+        [
+            'location'=>$this->location,
+            'date' => $this->date,
+            'maxAppointmentTime' => $this->slotSize * 2,
+            'disabled' => $this->disabled,
+            'from' =>$this->startingTimeAt,
+            'to' =>$this->endingTimeAt,
+            'priest'=>new PriestResource($this->priest)
+        ];
     }
 }

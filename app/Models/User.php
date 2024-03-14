@@ -44,7 +44,7 @@ class User extends Authenticatable
     ];
     public function priest(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Priests::class);
+        return $this->hasOne(Priests::class,'priest_id');
     }
 
 

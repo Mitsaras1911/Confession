@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\v1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCalendarRequest extends FormRequest
+class UpdateAppointmentsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
