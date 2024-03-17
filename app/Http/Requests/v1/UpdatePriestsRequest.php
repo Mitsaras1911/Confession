@@ -11,7 +11,7 @@ class UpdatePriestsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return  $this->user() != null;
     }
 
     /**
@@ -21,8 +21,34 @@ class UpdatePriestsRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        if ($this->method() == 'PUT'){
+            return [
+                'rank' => ['required'] ,
+                'name' => ['required'],
+                'surname' => ['required'],
+                'age' => ['required'],
+                'parish' => ['required'],
+                'churchName' => ['required'],
+                'phoneNumber' =>['required'],
+                'email'=>['required'],
+                'password'=>['required']
+            ];
+        }else{//method == PATCH
+
+            return [
+                'rank' => ['sometimes','required'] ,
+                'name' => ['sometimes','required'],
+                'surname' => ['sometimes','required'],
+                'age' => ['sometimes','required'],
+                'parish' => ['sometimes','required'],
+                'churchName' => ['sometimes','required'],
+                'phoneNumber' =>['sometimes','required'],
+                'email'=>['sometimes','required'],
+                'password'=>['sometimes','required']
+            ];
+        }
+
+
+
     }
 }

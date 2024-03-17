@@ -11,7 +11,7 @@ class StoreCalendarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,18 @@ class StoreCalendarRequest extends FormRequest
      */
     public function rules(): array
     {
+        /*
+         *     $table->integer('priest_id');
+            $table->string('location');
+            $table->string('date');
+            $table->integer('slotSize');
+            $table->boolean('disabled');
+            $table->string('startingTimeAt');
+            $table->string('endingTimeAt');
+*/
         return [
-            //
+
+
         ];
     }
 }

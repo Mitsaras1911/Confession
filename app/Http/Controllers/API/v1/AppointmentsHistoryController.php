@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers\API\v1;
 
 use App\Http\Requests\v1\StoreAppointmentsHistoryRequest;
 use App\Http\Requests\v1\UpdateAppointmentsHistoryRequest;

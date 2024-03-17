@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\v1;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateAppointmentsRequest extends FormRequest
@@ -11,18 +12,43 @@ class UpdateAppointmentsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return  $this->user() != null;
+
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        //$method = $this->method();
+
+        if($this->method() == 'PUT'){
+            return [
+                'confessorName' => ['required'] ,
+                'phoneNumber' => ['required'] ,
+                'date' => ['required'] ,
+                'time' => ['required'] ,
+                'slotCount' => ['required'] ,
+                'priest_id' => ['required']
+            ];
+        }else{
+            return [
+                'confessorName' => ['sometimes','required'] ,
+                'phoneNumber' => ['sometimes','required'] ,
+                'date' => ['sometimes','required'] ,
+                'time' => ['sometimes','required'] ,
+                'slotCount' => ['sometimes','required'] ,
+                'priest_id' => ['sometimes','required']
+            ];
+
+        }
+
+
+
+
+
     }
 }

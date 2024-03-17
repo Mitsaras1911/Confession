@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\v1;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -22,7 +22,6 @@ class CalendarResource extends JsonResource
             'disabled' => $this->disabled,
             'from' =>$this->startingTimeAt,
             'to' =>$this->endingTimeAt,
-            'priest'=>new PriestResource($this->priest)
-        ];
+            ];
     }
 }

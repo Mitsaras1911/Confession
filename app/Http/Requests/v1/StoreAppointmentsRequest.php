@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\v1;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-
 class StoreAppointmentsRequest extends FormRequest
 {
     /**
@@ -11,13 +11,14 @@ class StoreAppointmentsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return  $this->user() != null;
+
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -27,21 +28,7 @@ class StoreAppointmentsRequest extends FormRequest
             'date' => ['required'] ,
             'time' => ['required'] ,
             'slotCount' => ['required'] ,
+            'priest_id' => ['required']
         ];
     }
-
-    /*
-     *       $table->id();
-            $table->integer('priest_id');//RELATION WITH PRIESTS TABLE
-            $table->string('confessorName');
-            $table->string('responseMessage')->nullable();
-            $table->string('phoneNumber');
-            $table->string('date');
-            $table->string('time');
-            $table->integer('slotCount');
-            $table->string('status');//Approoved,Pending,Declined
-
-            $table->softDeletes();
-            $table->timestamps();
-        });*/
 }

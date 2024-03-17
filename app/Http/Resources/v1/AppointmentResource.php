@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\v1;
 
 use App\Models\Appointments;
 use App\Models\Priests;
@@ -16,7 +16,6 @@ class AppointmentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $confessing_priest = Priests::find($this->priest_id);
         return [
             'id'=> $this->id,
             'confessorName'=>$this->confessorName,
@@ -25,7 +24,7 @@ class AppointmentResource extends JsonResource
             'date' => $this->date,
             'time'=> $this->time,
             'duration'=>$this->slotCount,
-            'confessing_priest'=>$confessing_priest
+            'confessing_priest'=>$this->confessingPriest,
         ];
     }
 }

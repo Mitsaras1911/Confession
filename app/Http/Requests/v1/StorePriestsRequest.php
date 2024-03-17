@@ -11,7 +11,7 @@ class StorePriestsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return  $this->user() != null;
     }
 
     /**
@@ -19,19 +19,17 @@ class StorePriestsRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
+    public function rules(): array{
         return [
             'rank' => ['required'] ,
             'name' => ['required'],
             'surname' => ['required'],
             'age' => ['required'],
             'parish' => ['required'],
-            'phoneNumber' =>['required']
+            'churchName' => ['required'],
+            'phoneNumber' =>['required'],
+            'email'=>['required'],
+            'password'=>['required']
         ];
-
-
-
-
     }
 }

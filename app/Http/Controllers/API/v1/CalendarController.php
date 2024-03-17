@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\V1;
+namespace App\Http\Controllers\API\v1;
 
 use App\Http\Requests\v1\StoreCalendarRequest;
 use App\Http\Requests\v1\UpdateCalendarRequest;
-use App\Http\Resources\V1\CalendarCollection;
+use App\Http\Resources\v1\CalendarCollection;
 use App\Models\Calendar;
 use Illuminate\Http\Request;
 
@@ -43,20 +43,13 @@ class CalendarController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCalendarRequest $request)
     {
-        //
+
     }
 
     /**
